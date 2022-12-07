@@ -22,4 +22,4 @@ def get_input_list(file_name: str) -> Generator[str, None, None]:
 
     with open(file_name) as input_file:
         for line in input_file:
-            yield line
+            yield line.replace("\n", "")
