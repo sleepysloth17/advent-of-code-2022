@@ -70,6 +70,9 @@ def run_through_forest(forest: List[List[Tree]], first_pass: bool) -> None:
     Updates all the comparative height of the trees in the forest
     first_pass True means left to right, up to down
     first_pass False mean right to left, down to up
+
+    Honestly, this made a lot more sense for part 1, with part 2 this
+    is harder to read than the obvious way.
     """
 
     trees_vertical_list: List[List[int]] = []

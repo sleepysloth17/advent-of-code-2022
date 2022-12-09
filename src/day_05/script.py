@@ -16,7 +16,7 @@ class Move:
         if not Move._move_row_regex.match(row):
             return None
 
-        numbers: List[str] = findall("\d+", row)
+        numbers: List[str] = findall("\\d+", row)
 
         return Move(int(numbers[0]), int(numbers[1]) - 1, int(numbers[2]) - 1)
 
@@ -27,12 +27,13 @@ class Move:
 
     def apply(self, boxes: List[str], chunked: bool) -> None:
         index: int = -self.total
+
         if chunked:
             boxes[self.to_stack] += boxes[self.from_stack][index:]
-            boxes[self.from_stack] = boxes[self.from_stack][:index]
         else:
             boxes[self.to_stack] += boxes[self.from_stack][-1 : index - 1 : -1]
-            boxes[self.from_stack] = boxes[self.from_stack][:index]
+            
+        boxes[self.from_stack] = boxes[self.from_stack][:index]
 
 
 def get_boxes(file_name: str) -> List[str]:
